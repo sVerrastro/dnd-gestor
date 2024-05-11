@@ -14,8 +14,9 @@ public class Privilegio {
         this.descrizione = "descrizione";
     }
 
-    public void Astuzia_Gnomesca() {
-        this.nome = "astuzia gnomesca";
+    public void Sensi_Acuti() {
+        this.nome = "Sensi Acuti";
         this.descrizione = "descrizione";
+        Personaggio.addCompetence(new Competence("percezione"));
     }
 }

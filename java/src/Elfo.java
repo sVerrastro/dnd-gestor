@@ -1,11 +1,7 @@
-import java.util.Vector;
-
-public class Elfo {
-    
-    Vector<Privilegio> privilegi = new Vector<>();
-    Vector<String> languages = new Vector<>();
+public class Elfo extends Razza {
 
     public Elfo () {
+        super();
         loadPrivileges();
         loadLanguages();
     }
@@ -25,6 +21,17 @@ public class Elfo {
     private class Subrace {
     
         String name;
+
+        public Subrace(String name) {
+            switch (name) {
+                case "elfo alto":
+                    
+                    break;
+            
+                default:
+                    break;
+            }
+        }
 
         public void setName(String name) {
             this.name = name;

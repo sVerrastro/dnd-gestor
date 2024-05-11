@@ -1,12 +1,11 @@
+import java.util.Vector;
+
 public class Personaggio {
     
-    //string
-    String classe;
-    String sottoclasse;
-    String razza;
-    String background;
-    String allineamento;
-    String nome;
+    Razza razza;
+    Classe classe;
+
+    static Vector<Competence> comp_list = new Vector<>();
 
     //int
     int livello;
@@ -23,6 +22,8 @@ public class Personaggio {
 
     }
 
-
+    public static void addCompetence(Competence competence) {
+        comp_list.add(competence);
+    }
 
 }

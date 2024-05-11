@@ -1,20 +1,28 @@
 public class Stats {
     
-    int value;
-    int modifier;
+    int base_value;
+    int bonus = 0;
+    int final_value;
+    int modifier = 0;
 
     public Stats(int value) {
-        updateValue(value);
+        this.base_value = value;
+        this.modifier = mod(value);
     }
 
-    public void updateValue(int value) {
-        this.value = value;
-        this.modifier = mod(this.value);
+    public void updateValue() {
+        this.final_value = base_value + bonus;
+        this.modifier = mod(this.final_value);
+    }
+
+    public void setValue(int value) {
+        this.base_value = value;
+        updateValue();
     }
 
     public void addBonus(int bonus) {
-        this.value += bonus;
-        this.modifier = mod(this.value);
+        this.bonus += bonus;
+        updateValue();
     }
 
     public int mod(int value) {
