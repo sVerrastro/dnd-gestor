@@ -5,8 +5,12 @@ public class Stats {
     int final_value;
     int modifier = 0;
 
-    public Stats(int value) {
+    String name;
+
+    public Stats(String name, int value) {
+        this.name = name;
         this.base_value = value;
+        this.final_value = value;
         this.modifier = mod(value);
     }
 

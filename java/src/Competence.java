@@ -1,11 +1,12 @@
 public class Competence {
     
-    String name;
+    String nome;
     String scaling;
+    String type;
 
-    public Competence(String name) {
-        this.name = name;
-        
+    public Competence(String type, String nome) {
+        this.type = type;
+        this.nome = nome;
     }
 
 }
