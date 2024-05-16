@@ -85,6 +85,8 @@ public class Razza {
 
                 break;
             }
+            default: 
+                break;
         }
     }
 
@@ -386,6 +388,8 @@ public class Razza {
 
                 break;
             }
+            default: 
+                break;
         }
     }
 }

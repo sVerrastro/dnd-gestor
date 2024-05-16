@@ -2,99 +2,125 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Main {
-    
+
     static Personaggio character = new Personaggio();
     static JComboBox<String> sottorazze;
 
     static JFrame frame;
     static JPanel panel;
     static GridBagConstraints gbc;
+
     public static void main(String[] args) {
+        character.razza = new Razza("Elfo");
+        character.razza.subrace = "Elfo Alto";
+        SwingUtilities.invokeLater(Main::createAndShowGUI);
+    }
 
-        //razze
-        String[] lista_razze = {"Elfo", "Halfling", "Nano", "Dragonide", "Gnomo", "Tiefling"};
-        JComboBox<String> razze = new JComboBox<>(lista_razze);
-        razze.addItemListener(ActionEvent -> scegliRazza(String.valueOf(razze.getSelectedItem())));
-
-        //classi
-        String[] lista_classi = {"Barbaro", "Bardo", "Chierico", "Druido", "Guerriero", "Ladro", "Mago", "Monaco", "Paladino", "Ranger", "Stregone", "Warlock"};
-        JComboBox<String> classi = new JComboBox<>(lista_classi);
-
-        //bottone
-        JButton bottone = new JButton("SELEZIONA");
-        bottone.addActionListener(ActionEvent -> clicca(classi));
-
-        //frame
-        frame = new JFrame();
-        frame.setSize(500, 500);
+    private static void createAndShowGUI() {
+        frame = new JFrame("Character Creator");
+        frame.setSize(600, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //panel
         panel = new JPanel();
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         panel.setLayout(new GridBagLayout());
 
-        //gbc
         gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        //row 0
+        // Character Name
+        JLabel nameLabel = new JLabel("Name:");
+        gbc.gridx = 0;
         gbc.gridy = 0;
+        panel.add(nameLabel, gbc);
 
-            //col 0
-            gbc.gridx = 0;
-            gbc.fill = GridBagConstraints.HORIZONTAL;
-            panel.add(razze, gbc);
+        JTextField nameField = new JTextField(15);
+        gbc.gridx = 1;
+        panel.add(nameField, gbc);
 
-        //row 1
+        // Character Alignment
+        JLabel alignmentLabel = new JLabel("Alignment:");
+        gbc.gridx = 0;
         gbc.gridy = 1;
+        panel.add(alignmentLabel, gbc);
 
-            //col 0
-            gbc.gridx = 0;
-            gbc.fill = GridBagConstraints.HORIZONTAL;
-            panel.add(classi, gbc);
+        // JComboBox per l'allineamento
+        String[] alignmentOptions = {"Legale Buono", "Neutrale Buono", "Caotico Buono", "Legale Neutrale", "Neutrale", "Caotico Neutrale", "Legale Malvagio", "Neutrale Malvagio", "Caotico Malvagio"};
+        JComboBox<String> alignmentComboBox = new JComboBox<>(alignmentOptions);
+        gbc.gridx = 1;
+        panel.add(alignmentComboBox, gbc);
 
-        //row 2
+        // Race Selection
+        JLabel raceLabel = new JLabel("Race:");
+        gbc.gridx = 0;
         gbc.gridy = 2;
+        panel.add(raceLabel, gbc);
 
-            //col 0
-            gbc.gridx = 0;
-            gbc.gridwidth = 1;
-            gbc.fill = GridBagConstraints.HORIZONTAL;
-            panel.add(bottone, gbc);
-        
+        String[] lista_razze = {"Elfo", "Halfling", "Nano", "Dragonide", "Gnomo", "Tiefling"};
+        JComboBox<String> razze = new JComboBox<>(lista_razze);
+        razze.setSelectedItem("Elfo");
+        gbc.gridx = 1;
+        panel.add(razze, gbc);
+
+        razze.addItemListener(ActionEvent -> trovaSottoRazza(String.valueOf(razze.getSelectedItem())));
+
+        // Subrace Selection (initially hidden)
+        JLabel subraceLabel = new JLabel("Subrace:");
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        panel.add(subraceLabel, gbc);
+
+        String[] emptyArray = {"Elfo Alto", "Elfo dei Boschi", "Elfo Oscuro"};
+        sottorazze = new JComboBox<>(emptyArray);
+        sottorazze.setSelectedItem("Elfo Alto");
+        gbc.gridx = 1;
+        panel.add(sottorazze, gbc);
+
+        // Class Selection
+        JLabel classLabel = new JLabel("Class:");
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        panel.add(classLabel, gbc);
+
+        String[] lista_classi = {"Barbaro", "Bardo", "Chierico", "Druido", "Guerriero", "Ladro", "Mago", "Monaco", "Paladino", "Ranger", "Stregone", "Warlock"};
+        JComboBox<String> classi = new JComboBox<>(lista_classi);
+        classi.setSelectedItem("Barbaro");
+        gbc.gridx = 1;
+        panel.add(classi, gbc);
+
+        // Selection Button
+        JButton bottone = new JButton("SELEZIONA");
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.CENTER;
+        panel.add(bottone, gbc);
+
+        bottone.addActionListener(ActionEvent -> clicca(classi, nameField, alignmentComboBox));
+
         frame.add(panel);
         frame.setVisible(true);
     }
 
-    private static void scegliRazza(String razza) {
-
+    private static void trovaSottoRazza(String razza) {
         try {
             panel.remove(sottorazze);
         } catch (Exception e) {}
-        
+
         Razza race = new Razza(razza);
         character.razza = race;
 
         if (race.hasSubRace) {
-            
             sottorazze = new JComboBox<>(race.sottorazze);
-
-            //row 0
-            gbc.gridy = 0;
-
-            //col 1
             gbc.gridx = 1;
+            gbc.gridy = 3;
             gbc.fill = GridBagConstraints.HORIZONTAL;
             panel.add(sottorazze, gbc);
-
+            sottorazze.setVisible(true);
         } else {
-            //row 0
-            gbc.gridy = 0;
-
-            //col 1
-            gbc.gridx = 1;
-            gbc.fill = GridBagConstraints.HORIZONTAL;
-            panel.add(new JLabel(""), gbc);
+            sottorazze = new JComboBox<>();
+            sottorazze.setVisible(false);
         }
 
         panel.validate();
@@ -105,31 +131,39 @@ public class Main {
         return new Classe(string);
     }
 
-    public static void clicca(JComboBox<String> classi) {
+    public static void clicca(JComboBox<String> classi, JTextField nameField, JComboBox<String> alignmentComboBox) {
+        character.nome = nameField.getText();
+        character.allineamento = String.valueOf(alignmentComboBox.getSelectedItem());
+
         try {
             String sottorazza = (String.valueOf(sottorazze.getSelectedItem()));
             character.razza.subrace = sottorazza;
             character.razza.addTraits(sottorazza);
         } catch (Exception e) {
+            String sottorazza = ("nessuna");
+            character.razza.subrace = sottorazza;
             character.razza.addTraits(character.razza.name);
         }
 
         character.classe = scegliClasse(String.valueOf(classi.getSelectedItem()));
 
+        //#region debug
         System.out.println("DEBUG----------");
-        System.out.println("Razza) " + character.razza.name);
-        System.out.println("Sottorazza) " + character.razza.subrace);
-        System.out.println("Classe) " + character.classe.name);
+        System.out.println("Name: " + character.nome);
+        System.out.println("Alignment: " + character.allineamento);
+        System.out.println("Razza: " + character.razza.name);
+        System.out.println("Sottorazza: " + character.razza.subrace);
+        System.out.println("Classe: " + character.classe.name);
 
-        System.out.println("PV) " + character.classe.punti_ferita);
+        System.out.println("PV: " + character.classe.punti_ferita);
 
-        System.out.print("Tiri salvezza) ");
+        System.out.print("Tiri salvezza: ");
         for (String saves : character.classe.save_throws) {
             System.out.print(saves + "; ");
         }
 
         System.out.println("");
-        System.out.print("Languages) ");
+        System.out.print("Languages: ");
         for (String lingua : character.razza.languages) {
             System.out.print(lingua + "; ");
         }
@@ -160,9 +194,7 @@ public class Main {
 
         count = 0;
         for (Bonus bonus : character.razza.bonuses) {
-
             int index = 0;
-            System.out.println("\nDEBUG>> bonus: " + bonus.value);
             switch (bonus.nome) {
                 case "Forza": index = 0; break;
                 case "Destrezza": index = 1; break;
@@ -171,7 +203,6 @@ public class Main {
                 case "Saggezza": index = 4; break;
                 case "Carisma": index = 5; break;
             }
-
             character.classe.stats.elementAt(index).addBonus(bonus.value);
         }
 
@@ -192,6 +223,12 @@ public class Main {
         for (Spell incantesimo : character.classe.spells) {
             System.out.println(incantesimo.name);
         }
+        //#endregion debug
 
+        JFrame finestra = new NewJFrame();
+        finestra.setVisible(true);
+
+        // Chiudi la finestra di creazione
+        frame.dispose();
     }
 }

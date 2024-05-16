@@ -3,6 +3,7 @@ import java.util.Vector;
 public class Personaggio {
     
     String nome;
+    String allineamento;
     int livello = 1;
     int bonus_competenza = 2;
 
@@ -26,5 +27,4 @@ public class Personaggio {
     public void addCompetence(Competence competence) {
         comp_list.add(competence);
     }
-
 }
