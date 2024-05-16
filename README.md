@@ -1,6 +1,6 @@
-# Character Creator
+# D&D WizSheet
 
-Il Character Creator è un'applicazione desktop che consente agli utenti di creare schede personaggio per il rinomato gioco di ruolo D&D. Con un'interfaccia intuitiva e user-friendly, questo software offre un modo semplice e veloce per creare schede di personaggio semplificate in caso di bisogno.
+D&D WizSheet è un'applicazione desktop che consente agli utenti di creare schede personaggio per il rinomato gioco di ruolo D&D. Con un'interfaccia intuitiva e user-friendly, questo software offre un modo semplice e veloce per creare schede di personaggio semplificate in caso di bisogno.
 
 ## Caratteristiche Principali:
 
@@ -14,10 +14,12 @@ Il Character Creator è un'applicazione desktop che consente agli utenti di crea
 
 ## Perché è Utile:
 
-Il Character Creator è uno strumento estremamente utile per giocatori e master di giochi di ruolo per diversi motivi:
+D&D WizSheet è uno strumento estremamente utile per giocatori e master di giochi di ruolo per diversi motivi:
 
 - **Efficienza:** Riduce il tempo e lo sforzo necessario per creare manualmente schede di personaggio, consentendo ai giocatori di concentrarsi maggiormente sull'esperienza di gioco.
 
 - **Precisione:** Garantisce l'accuratezza e la coerenza delle informazioni del personaggio, evitando errori comuni durante la creazione manuale delle schede.
 
 - **Facilità d'Uso:** Grazie all'interfaccia intuitiva e user-friendly, è accessibile anche ai giocatori meno esperti, rendendo la creazione del personaggio un'esperienza piacevole e senza complicazioni.
+
+###### Sergio Verrastro 16/05/2024
