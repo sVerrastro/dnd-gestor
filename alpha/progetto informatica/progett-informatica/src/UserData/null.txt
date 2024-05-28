@@ -1,0 +1,32 @@
+DEBUG----------
+Name: ciao
+Alignment: Legale Buono
+Razza: Halfling
+Sottorazza: Halfling Piedelesto
+Classe: Barbaro
+PV: 14
+Tiri salvezza: Forza; Costituzione; 
+Languages: Comune; Halfling; 
+Priv1) Nome: Fortunato| Descrizione: descrizione
+Priv2) Nome: Coraggioso| Descrizione: descrizione
+Priv3) Nome: Agilita' Halfling| Descrizione: descrizione
+Priv4) Nome: Furtivita' Innata| Descrizione: descrizione
+Priv5) Nome: Ira| Descrizione: descrizione
+Priv6) Nome: Difesa senza armatura| Descrizione: descrizione
+Comp1) Nome: Armature Leggere| Tipo: Armatura
+Comp2) Nome: Armature Medie| Tipo: Armatura
+Comp3) Nome: Scudi| Tipo: Armatura
+Comp4) Nome: Armi Semplici| Tipo: Arma
+Comp5) Nome: Armi da Guerra| Tipo: Arma
+
+STATS)
+Forza: 15, (mod2)
+Destrezza: 13, (mod1)
+Costituzione: 15, (mod2)
+Intelligenza: 10, (mod0)
+Saggezza: 10, (mod0)
+Carisma: 11, (mod0)
+
+CANTRIPS)
+
+SPELLS)

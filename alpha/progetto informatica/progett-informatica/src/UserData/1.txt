@@ -1,0 +1,38 @@
+DEBUG----------
+Name: dodod
+Alignment: Neutrale
+Razza: Gnomo
+Sottorazza: Gnomo delle Rocce
+Classe: Stregone
+PV: 8
+Tiri salvezza: Costituzione; Carisma; 
+Languages: Comune; Gnomesco; 
+Priv1) Nome: Scurovisione| Descrizione: descrizione
+Priv2) Nome: Astuzia Gnomesca| Descrizione: descrizione
+Priv3) Nome: Conoscenze dell'Artefice| Descrizione: descrizione
+Priv4) Nome: Inventore| Descrizione: descrizione
+Priv5) Nome: Origine Stregonesca| Descrizione: descrizione
+Comp1) Nome: Strumenti da Artigiano| Tipo: Strumento
+Comp2) Nome: Balestre Leggere| Tipo: Arma
+Comp3) Nome: Bastoni Ferrati| Tipo: Arma
+Comp4) Nome: Dardi| Tipo: Arma
+Comp5) Nome: Fionde| Tipo: Arma
+Comp6) Nome: Pugnali| Tipo: Arma
+
+STATS)
+Forza: 10, (mod0)
+Destrezza: 10, (mod0)
+Costituzione: 16, (mod3)
+Intelligenza: 12, (mod1)
+Saggezza: 11, (mod0)
+Carisma: 15, (mod2)
+
+CANTRIPS)
+Dardo di Fuoco
+Mano Magica
+Prestidigitazione
+Tocco Gelido
+
+SPELLS)
+Dardo Incantato
+Mani Brucianti
